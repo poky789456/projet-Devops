@@ -17,8 +17,8 @@ pipeline {
                 stage('Build image docker') {
             steps {
               script {
-                  sh 'docker build -t myimage_nginx .'
-                  sh 'docker tag myimage_nginx bradley:myimage_nginx'
+                  sh 'docker build -t eval_nginx .'
+                  sh 'docker tag eval_nginx bradley:eval_nginx'
               }
 
             }
@@ -28,7 +28,7 @@ pipeline {
               script {    
                   sh 'docker stop monapp'
                   sh 'docker rm monapp'   
-                  sh 'docker run -d --name monapp --hostname monapp -p 8099:80 myimage_nginx'
+                  sh 'docker run -d --name monapp --hostname monapp -p 8088:80 eval_nginx'
                   sh 'docker exec monapp "ifconfig"'
               }
 
