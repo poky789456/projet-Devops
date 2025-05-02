@@ -26,8 +26,11 @@ pipeline {
             stage('Deploiement application') {
             steps {
               script {    
-                  sh 'docker stop myapp'
-                  sh 'docker rm myapp'   
+            def containerExists = sh(script: 'docker ps -a -q -f name=myapp', returnStdout: true).trim()
+            if (containerExists) {
+                sh 'docker stop myapp'
+                sh 'docker rm myapp'
+            }
                   sh 'docker run -d --name myapp --hostname myapp -p 8088:80 myapp-image'
                   sh 'docker exec myapp "ifconfig"'
               }
