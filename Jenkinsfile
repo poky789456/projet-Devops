@@ -27,8 +27,8 @@ pipeline {
             steps {
               script {    
                   sh 'docker stop myapp'
-                  sh 'docker rm monapp'   
-                  sh 'docker run -d --name monapp --hostname myapp -p 8088:80 eval_nginx'
+                  sh 'docker rm myapp'   
+                  sh 'docker run -d --name myapp --hostname myapp -p 8088:80 eval_nginx'
                   sh 'docker exec myapp "ifconfig"'
               }
 
