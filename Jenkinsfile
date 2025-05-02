@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Checkout SCM') {
             steps {
-                git branch: 'master', credentialsId: 'f70e73ef-7623-455b-a5ab-a637fbdf8701', url: 'https://github.com/poky789456/projet-dev01.git'
+                git branch: 'main', credentialsId: '2a8e1946-6c6a-413c-8a49-2cd88f0b2113', url: 'https://github.com/poky789456/projet-Devops.git'
                    }
 
             }
